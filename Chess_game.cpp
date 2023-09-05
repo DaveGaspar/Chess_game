@@ -302,31 +302,13 @@ std::pair<Base_piece::Piece_Id, Square> Chess_minigame::look_for_mate_in_1(){
 
 				for (auto piece = ++temp_board->m_pieces_on_board.begin(); piece != temp_board->m_pieces_on_board.end(); ++piece){
 					(*piece)->move(temp_board->m_pieces_on_board);
-					// for (auto p : (*piece)->m_sq_that_can_move){
-					// 	std::cout << (char)(97+p.m_letter) << 8 - p.m_number << std::endl;
-					// }
 				}
 				
 				temp_board_status = temp_board->check();
 
-				// std::cout << temp_board->b_k_position << std::endl;
-				// std::cout << temp_board->w_k_position << std::endl;
-				// std::cout << temp_board->w_q_position << std::endl;
-				// std::cout << temp_board->w_b_position << std::endl;
-				// std::cout << temp_board->w_n_position << std::endl;
-
 				switch (temp_board_status)
 				{
 				case Board_status::Checkmate:
-					// std::cout << "\n\n\n" << i << "\n\n\n";
-					
-					// for (auto popo = ++temp_board->m_pieces_on_board.begin(); popo != temp_board->m_pieces_on_board.end(); ++popo){
-					// 	std::cout << (*popo)->m_id << " " << (char)(97+(*popo)->m_position.m_letter) << 8 - (*popo)->m_position.m_number << std::endl;
-					// 	for (auto p : (*popo)->m_sq_that_can_move){
-					// 		std::cout << (char)(97+p.m_letter) << 8 - p.m_number << std::endl;
-					// 	}
-					// }
-
 					delete temp_board;
 					return std::make_pair((*it)->m_id,in);
 				case Board_status::Check:
@@ -485,7 +467,6 @@ void Chess_minigame::start(){
 		std::cout << "Mate in one: White Knight " <<  (char)(97+mate_in_1.second.m_letter) << 8 - mate_in_1.second.m_number << std::endl;
 		break;
 	default:
-		// std::cout << "default" << std::endl;
 		break;
 	}
 
